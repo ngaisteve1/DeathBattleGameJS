@@ -99,15 +99,25 @@
                 showHeroLife();
             }
             checkEndGame();
+            //setTimeout(callback, 1000);
         }
     }
+
+    var callback = function () {
+        Promise.all([new Promise(showHeroLife), new Promise(checkEndGame)]).then(function (values) {
+            console.log('all done');
+            setTimeout(callback, 1000);
+            console.log('next call successfully enqued');
+        });
+    };
+
 
     const showHeroLife = () => {
         setInterval(
             function () {
                 $('#supermanLife').text(superman.life);
                 $('#batmanLife').text(batman.life);
-            }, 2000
+            }, 1000
         );
     }
 
@@ -118,15 +128,13 @@
             if (superman.isAlive) {
                 $('#gameResult').text('Superman killed Batman with X-Ray laser vision.');
                 console.log('Superman win');
-                $('#heroBatman').fadeTo(2000, 0.4); // fadeOut
+                $('#heroBatman').fadeTo(1000, 0.2); // fadeOut
             }
             else {
                 $('#gameResult').text('Batman killed Superman with Kryptonite spear.');
                 console.log('Batman win');
-                $('#heroSuperman').fadeTo(2000, 0.4); // fadeOut
+                $('#heroSuperman').fadeTo(1000, 0.2); // fadeOut
             }
-
-
         }
     };
 
