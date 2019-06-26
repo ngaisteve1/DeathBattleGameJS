@@ -38,6 +38,8 @@
             <br>Life: <span id='supermanLife'></span>
         </div>
     </div>
+
+    <div id='gameResult'></div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
@@ -114,10 +116,12 @@
             console.log('Game Over');
 
             if (superman.isAlive) {
+                $('gameResult').text('Superman killed Batman with X-Ray laser vision.');
                 console.log('Superman win');
                 $('#heroBatman').fadeTo(2000, 0.4); // fadeOut
             }
             else {
+                $('gameResult').text('Batman killed Superman with Kryptonite spear.');
                 console.log('Batman win');
                 $('#heroSuperman').fadeTo(2000, 0.4); // fadeOut
             }
