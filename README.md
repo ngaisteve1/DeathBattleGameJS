@@ -23,5 +23,8 @@
 ### JQuery methods implemented:
 - fadeTo
 
+### Other Versions
+- [Battle Game in C# Console](https://github.com/ngaisteve1/DeathBattleGame_With_OOP)
+
 [If this content is helpful to you, consider to support and buy me a cup of coffee :) ](https://ko-fi.com/V7V2PN67)
 
