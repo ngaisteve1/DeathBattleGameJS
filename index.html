@@ -116,12 +116,12 @@
             console.log('Game Over');
 
             if (superman.isAlive) {
-                $('gameResult').text('Superman killed Batman with X-Ray laser vision.');
+                $('#gameResult').text('Superman killed Batman with X-Ray laser vision.');
                 console.log('Superman win');
                 $('#heroBatman').fadeTo(2000, 0.4); // fadeOut
             }
             else {
-                $('gameResult').text('Batman killed Superman with Kryptonite spear.');
+                $('#gameResult').text('Batman killed Superman with Kryptonite spear.');
                 console.log('Batman win');
                 $('#heroSuperman').fadeTo(2000, 0.4); // fadeOut
             }
@@ -131,7 +131,7 @@
     };
 
     const init = () => {
-        $('gameResult').text('');
+        $('#gameResult').text('');
 
         superman.life = 10;
         superman.isAlive = true;
