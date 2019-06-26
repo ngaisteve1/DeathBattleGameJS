@@ -1,0 +1,141 @@
+<style>
+    div#main {
+        max-width: 500;
+        margin: 0 auto;
+        font-size: 2em;
+        text-align: center;
+    }
+
+    div#heroContainer {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    img.hero {
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+    }
+
+    button {
+        font-size: 2em;
+        margin-top: -40px;
+    }
+</style>
+
+<div id='main'>
+    <img src="Img/master.jpg" height="200" width="500">
+    <button onclick="playGame()">Fight!</button>
+    <div id='heroContainer'>
+        <div id='heroBatman'>
+            <img src="Img/batman.jpg" class='hero'>
+            <br>Life: <span id='batmanLife'></span>
+        </div>
+
+        <div id='heroSuperman'>
+            <img src="Img/superman.jpg" class='hero'>
+            <br>Life: <span id='supermanLife'></span>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    var superman = {
+        life: 10,
+        isAlive: true,
+        attack: function () {
+            return Math.floor(Math.random() * 3);
+        }
+    };
+
+    var batman = {
+        life: 10,
+        isAlive: true,
+        attack: function () {
+            return Math.floor(Math.random() * 3);
+        }
+    };
+
+    $('#supermanLife').text(superman.life);
+    $('#batmanLife').text(batman.life);
+
+    const playGame = () => {
+        init();
+        debugger
+        // while both still alive, figth each other.         
+        while (superman.isAlive && batman.isAlive) {
+
+            var whoAttack = Math.floor(Math.random() * 2);
+            if (whoAttack === 0) {
+                // superman attack batman
+
+                // if attack is zero, enemy avoided attack.
+                if (superman.attack === 0) {
+
+                } else {
+                    batman.life = batman.life - 1;
+                }
+
+                if (batman.life <= 0)
+                    batman.isAlive = false;
+
+                showHeroLife();
+            } else {
+                debugger
+                // batman attack superman
+                // if attack is zero, enemy avoided attack.
+                if (batman.attack === 0) {
+
+                } else {
+                    superman.life = superman.life - 1;
+                }
+
+                if (superman.life <= 0)
+                    superman.isAlive = false;
+
+                showHeroLife();
+            }
+            checkEndGame();
+        }
+    }
+
+    const showHeroLife = () => {
+        setInterval(
+            function () {
+                $('#supermanLife').text(superman.life);
+                $('#batmanLife').text(batman.life);
+            }, 2000
+        );
+    }
+
+    const checkEndGame = () => {
+        if (superman.isAlive === false || batman.isAlive === false) {
+            console.log('Game Over');
+
+            if (superman.isAlive) {
+                console.log('Superman win');
+                $('#heroBatman').fadeTo(2000, 0.4); // fadeOut
+            }
+            else {
+                console.log('Batman win');
+                $('#heroSuperman').fadeTo(2000, 0.4); // fadeOut
+            }
+
+
+        }
+    };
+
+    const init = () => {
+        superman.life = 10;
+        superman.isAlive = true;
+        $('#heroSuperman').show();
+
+        batman.life = 10;
+        batman.isAlive = true;
+        $('#heroBatman').show();
+    };
+
+    //playGame();
+
+</script>
