@@ -65,60 +65,54 @@
     const playGame = () => {
         init();
         debugger
-        // while both still alive, figth each other.         
-        while (superman.isAlive && batman.isAlive) {
+        fight();
+        function fight() {
+            setTimeout(function () {
+                // while both still alive, figth each other.         
+                //while (superman.isAlive && batman.isAlive) {
 
-            var whoAttack = Math.floor(Math.random() * 2);
-            if (whoAttack === 0) {
-                // superman attack batman
+                var whoAttack = Math.floor(Math.random() * 2);
+                if (whoAttack === 0) {
+                    // superman attack batman
 
-                // if attack is zero, enemy avoided attack.
-                if (superman.attack === 0) {
+                    // if attack is zero, enemy avoided attack.
+                    if (superman.attack === 0) {
 
+                    } else {
+                        batman.life = batman.life - 1;
+                    }
+
+                    if (batman.life <= 0)
+                        batman.isAlive = false;
+
+                    showHeroLife();
                 } else {
-                    batman.life = batman.life - 1;
+                    debugger
+                    // batman attack superman
+                    // if attack is zero, enemy avoided attack.
+                    if (batman.attack === 0) {
+
+                    } else {
+                        superman.life = superman.life - 1;
+                    }
+
+                    if (superman.life <= 0)
+                        superman.isAlive = false;
+
+                    showHeroLife();
                 }
 
-                if (batman.life <= 0)
-                    batman.isAlive = false;
-
-                showHeroLife();
-            } else {
-                debugger
-                // batman attack superman
-                // if attack is zero, enemy avoided attack.
-                if (batman.attack === 0) {
-
-                } else {
-                    superman.life = superman.life - 1;
-                }
-
-                if (superman.life <= 0)
-                    superman.isAlive = false;
-
-                showHeroLife();
-            }
-            checkEndGame();
-            //setTimeout(callback, 1000);
+                checkEndGame();
+                //}
+                if (superman.isAlive && batman.isAlive)
+                    fight();
+            }, 1000);
         }
     }
 
-    var callback = function () {
-        Promise.all([new Promise(showHeroLife), new Promise(checkEndGame)]).then(function (values) {
-            console.log('all done');
-            setTimeout(callback, 1000);
-            console.log('next call successfully enqued');
-        });
-    };
-
-
     const showHeroLife = () => {
-        setInterval(
-            function () {
-                $('#supermanLife').text(superman.life);
-                $('#batmanLife').text(batman.life);
-            }, 1000
-        );
+        $('#supermanLife').text(superman.life);
+        $('#batmanLife').text(batman.life);
     }
 
     const checkEndGame = () => {
@@ -149,7 +143,4 @@
         batman.isAlive = true;
         $('#heroBatman').fadeTo(2000, 1);
     };
-
-    //playGame();
-
 </script>
