@@ -1,4 +1,4 @@
-# DeathBattleGameJS
+# Death Battle Game JS - Batman vs Superman
 
 ### [Try it out](https://ngaisteve1.github.io/DeathBattleGameJS/)
 
