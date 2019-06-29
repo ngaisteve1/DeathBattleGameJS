@@ -6,6 +6,7 @@
 - Technology: Javascript, HTML, CSS
 - Javascript Library: JQuery 3.3.1
 - IDE: Visual Studio Code (Version 1.31.1)
+- 85 lines of code.
 
 ### Requirements:
 - When you run the program, user can enter the two character name.
@@ -17,8 +18,9 @@
 
 ### Javascript features implemented:
 - object
-- while loop
 - arrow function (ES6)
+- setTimeout
+- Math.random() and Math.floor()
 
 ### JQuery methods implemented:
 - fadeTo
