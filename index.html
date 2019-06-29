@@ -1,204 +1,26 @@
-<style>
-    div#main {
-        max-width: 500;
-        margin: 0 auto;
-        font-size: 2em;
-        text-align: center;
-    }
-
-    div#heroContainer {
-        margin-top: 20px;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    img.hero {
-        height: 200px;
-        width: 200px;
-        border-radius: 50%;
-    }
-
-    button {
-        font-size: 2em;
-        margin-top: -40px;
-    }
-
-    .attacked {
-        color: red;
-        animation: shake 0.5s;
-        /* When the animation is finished, start again */
-        animation-iteration-count: 1;
-    }
-
-    @keyframes shake {
-        0% {
-            transform: translate(1px, 1px) rotate(0deg);
-        }
-
-        10% {
-            transform: translate(-1px, -2px) rotate(-1deg);
-        }
-
-        20% {
-            transform: translate(-3px, 0px) rotate(1deg);
-        }
-
-        30% {
-            transform: translate(3px, 2px) rotate(0deg);
-        }
-
-        40% {
-            transform: translate(1px, -1px) rotate(1deg);
-        }
-
-        50% {
-            transform: translate(-1px, 2px) rotate(-1deg);
-        }
-
-        60% {
-            transform: translate(-3px, 1px) rotate(0deg);
-        }
-
-        70% {
-            transform: translate(3px, 1px) rotate(-1deg);
-        }
-
-        80% {
-            transform: translate(-1px, -1px) rotate(1deg);
-        }
-
-        90% {
-            transform: translate(1px, 2px) rotate(0deg);
-        }
-
-        100% {
-            transform: translate(1px, -2px) rotate(-1deg);
-        }
-    }
-</style>
-
-<div id='main'>
-    <img src="Img/master.jpg" height="200" width="500">
-    <button onclick="playGame()">Fight!</button>
-    <div id='heroContainer'>
-        <div id='heroBatman'>
-            <img src="Img/batman.jpg" class='hero'>
-            <br>Life: <span id='batmanLife'></span>
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="main">
+      <img src="Img/master.jpg" height="200" width="500" />
+      <button onclick="playGame()">Fight!</button>
+      <div id="heroContainer">
+        <div id="heroBatman">
+          <img src="Img/batman.jpg" class="hero" />
+          <br />Life: <span id="batmanLife"></span>
         </div>
 
-        <div id='heroSuperman'>
-            <img src="Img/superman.jpg" class='hero'>
-            <br>Life: <span id='supermanLife'></span>
+        <div id="heroSuperman">
+          <img src="Img/superman.jpg" class="hero" />
+          <br />Life: <span id="supermanLife"></span>
         </div>
+      </div>
+
+      <div id="gameResult"></div>
     </div>
-
-    <div id='gameResult'></div>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script>
-    var superman = {
-        life: 10,
-        isAlive: true
-        // attack: function () {
-        //     return Math.floor(Math.random() * 3);
-        // }
-    };
-
-    var batman = {
-        life: 10,
-        isAlive: true
-        // attack: function () {
-        //     return Math.floor(Math.random() * 3);
-        // }
-    };
-
-    $('#supermanLife').text(superman.life);
-    $('#batmanLife').text(batman.life);
-
-    const playGame = () => {
-        init();
-        debugger
-        fight();
-        function fight() {
-
-            setTimeout(function () {
-                $('#heroBatman').removeClass('attacked');
-                $('#heroSuperman').removeClass('attacked');
-                // while both still alive, figth each other.         
-                //while (superman.isAlive && batman.isAlive) {
-
-                var whoAttack = Math.floor(Math.random() * 2);
-                if (whoAttack === 0) {
-                    // superman attack batman
-
-                    // if attack is zero, enemy avoided attack.
-                    if (superman.attack === 0) {
-
-                    } else {
-                        batman.life = batman.life - 1;
-                        $('#heroBatman').addClass('attacked');
-                    }
-
-                    if (batman.life <= 0)
-                        batman.isAlive = false;
-
-                    showHeroLife();
-                } else {
-                    debugger
-                    // batman attack superman
-                    // if attack is zero, enemy avoided attack.
-                    if (batman.attack === 0) {
-
-                    } else {
-                        superman.life = superman.life - 1;
-                        $('#heroSuperman').addClass('attacked');
-                    }
-
-                    if (superman.life <= 0)
-                        superman.isAlive = false;
-
-                    showHeroLife();
-                }
-
-                checkEndGame();
-                //}
-                if (superman.isAlive && batman.isAlive)
-                    fight();
-            }, 1000);
-        }
-    }
-
-    const showHeroLife = () => {
-        $('#supermanLife').text(superman.life);
-        $('#batmanLife').text(batman.life);
-    }
-
-    const checkEndGame = () => {
-        if (superman.isAlive === false || batman.isAlive === false) {
-            console.log('Game Over');
-
-            if (superman.isAlive) {
-                $('#gameResult').text('Superman killed Batman with X-Ray laser vision.');
-                console.log('Superman win');
-                $('#heroBatman').fadeTo(1000, 0.2); // fadeOut
-            }
-            else {
-                $('#gameResult').text('Batman killed Superman with Kryptonite spear.');
-                console.log('Batman win');
-                $('#heroSuperman').fadeTo(1000, 0.2); // fadeOut
-            }
-        }
-    };
-
-    const init = () => {
-        $('#gameResult').text('');
-
-        superman.life = 10;
-        superman.isAlive = true;
-        $('#heroSuperman').fadeTo(2000, 1);
-
-        batman.life = 10;
-        batman.isAlive = true;
-        $('#heroBatman').fadeTo(2000, 1);
-    };
-</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
