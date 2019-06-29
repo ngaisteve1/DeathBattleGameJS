@@ -6,7 +6,7 @@
 - Technology: Javascript, HTML, CSS
 - Javascript Library: JQuery 3.3.1
 - IDE: Visual Studio Code (Version 1.31.1)
-- 85 lines of code.
+- Lines of code (excluding comment): 85
 
 ### Requirements:
 - When you run the program, user can enter the two character name.
