@@ -20,9 +20,6 @@ const getAttackDamage = () => {
   return Math.floor(Math.random() * 3);
 };
 
-$("#supermanLife").text(superman.life);
-$("#batmanLife").text(batman.life);
-
 const playGame = () => {
   init();
 
@@ -124,4 +121,6 @@ const init = () => {
   batman.life = 10;
   batman.isAlive = true;
   $("#heroBatman").fadeTo(2000, 1);
+
+  showHeroLife();
 };
