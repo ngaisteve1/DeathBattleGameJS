@@ -1,17 +1,19 @@
 var superman = {
   life: 10,
   isAlive: true,
-  attack() {
-    return getAttackDamage();
-  }
+  attack: 0
+  // attack() {
+  //   return getAttackDamage();
+  // }
 };
 
 var batman = {
   life: 10,
   isAlive: true,
-  attack() {
-    return getAttackDamage();
-  }
+  attack: 0
+  // attack() {
+  //   return getAttackDamage();
+  // }
 };
 
 const getAttackDamage = () => {
@@ -23,24 +25,30 @@ $("#batmanLife").text(batman.life);
 
 const playGame = () => {
   init();
-  debugger;
+
+  // recurssive is used instead of while loop for the setTimeout to work
   fight();
+
   function fight() {
     setTimeout(function() {
       $("#heroBatman").removeClass("attacked");
       $("#heroSuperman").removeClass("attacked");
       // while both still alive, figth each other.
+
+      // recurssive is used instead of while loop for the setTimeout to work
       //while (superman.isAlive && batman.isAlive) {
 
       var whoAttack = Math.floor(Math.random() * 2);
       if (whoAttack === 0) {
         // superman attack batman
 
+        // Random attack will be generated from 0-2
         // if attack is zero, enemy avoided attack.
-        if (superman.attack() === 0) {
+        superman.attack = getAttackDamage();
+        if (superman.attack === 0) {
           $("#gameResult").text("Superman attacked Batman but Batman avoided.");
         } else {
-          batman.life = batman.life - superman.attack();
+          batman.life = batman.life - superman.attack;
           $("#gameResult").text("Superman punched Batman.");
           $("#heroBatman").addClass("attacked");
         }
@@ -52,14 +60,16 @@ const playGame = () => {
 
         showHeroLife();
       } else {
-        debugger;
         // batman attack superman
+
+        // Random attack will be generated from 0-2
         // if attack is zero, enemy avoided attack.
-        if (batman.attack() === 0) {
+        batman.attack = getAttackDamage();
+        if (batman.attack === 0) {
           $("#gameResult").text("Superman dodged from Batmans trap.");
         } else {
           //superman.life = superman.life - 1;
-          superman.life = superman.life - batman.attack();
+          superman.life = superman.life - batman.attack;
           $("#gameResult").text(
             "Batman uses remote activated guns that fire and expels Kryptonite mist at Superman."
           );
@@ -76,6 +86,8 @@ const playGame = () => {
 
       checkEndGame();
       //}
+
+      // recurssive is used instead of while loop for the setTimeout to work
       if (superman.isAlive && batman.isAlive) fight();
     }, 1500);
   }
