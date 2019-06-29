@@ -24,7 +24,8 @@
 - fadeTo
 
 ### Video Demos
-- [Video demos](https://youtu.be/0sJuqwOhWGw)
+- [Version 1](https://youtu.be/0sJuqwOhWGw)
+- [Version 2](https://youtu.be/Aag9LzhSPQ8)
 
 ### Other Versions
 - [Battle Game in C# Console](https://github.com/ngaisteve1/DeathBattleGame_With_OOP)
