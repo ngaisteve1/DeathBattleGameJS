@@ -32,5 +32,8 @@
 ### Other Versions
 - [Battle Game in C# Console](https://github.com/ngaisteve1/DeathBattleGame_With_OOP)
 
+### To Do
+- To refactor code with using constructors, custom prototypes, and inheritance.
+
 [If this content is helpful to you, consider to support and buy me a cup of coffee :) ](https://ko-fi.com/V7V2PN67)
 
